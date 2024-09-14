@@ -1,0 +1,55 @@
+//
+
+
+Stock Buy and Sell – Max one Transaction Allowed
+Difficulty: EasyAccuracy: 42.13%Submissions: 9K+Points: 2
+You are given an array prices, where prices[i] denotes the price of a stock on the ith day. Find the maximun profit that you can make by buying a single stock and then selling it in the future. If it is not possible to make profit then return 0.
+Note: Consider 1-based indexing.
+
+Examples:
+
+Input: prices = [7, 1, 5, 3, 6, 4]
+Output: 5
+Explaination: You can buy the stock on day 1 at price = 1 and sell it on day 5 at price = 6. Hence, the profit is 5 and that is the maximum that
+we can obtain from the given prices.
+Input: prices = [5, 4, 3, 2, 1]
+Output: 0
+Explaination: Here the prices are in decreasing order, hence if we buy any day then we cannot sell it at a greater price. Hence, the answer is 0.
+Expected Time Complexity: O(n)
+Expected Space Complexity: O(1)
+
+Constraint:
+1<=prices.size()<=105
+0<=prices[i]<=104
+
+Code:
+
+class Solution {
+    public int maximumProfit(int prices[]) {
+        
+       int min_price = prices[0];
+       
+       int max_profit=0;
+       
+       for(int i=0;i<prices.length;i++){
+           
+           int profit = prices[i]-min_price;
+           
+           if(profit>max_profit){
+               
+               max_profit=profit;
+           }
+           else if (prices[i]<min_price){
+               
+               min_price = prices[i];
+           }
+       }
+       
+       return max_profit; 
+        
+    }
+}
+
+//
+//
+//
